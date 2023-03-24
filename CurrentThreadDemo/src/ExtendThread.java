@@ -1,21 +1,19 @@
-
-class NewThread implements Runnable
+class NewThread1 extends Thread
 {
-    Thread t;
-
-    NewThread()
+    NewThread1()
     {
-        t= new Thread(this,"Demo thread");
-        System.out.println("Child Thread: "+t);
-        t.start();
+        //creat a new,2nd thread
 
+        super("Demo Thread");
+        System.out.println("Child Thread: "+this);
+        start();
     }
     public void run()
     {
         try{
-            for(int n=5;n>0;n--)
+            for(int i=5;i>0;i--)
             {
-                System.out.println("Child Thread : "+n);
+                System.out.println("Child Thread : "+i);
                 Thread.sleep(500);
             }
         }catch (InterruptedException e)
@@ -24,19 +22,11 @@ class NewThread implements Runnable
         }
         System.out.println("Exiting Child thread ");
     }
-
 }
-
-
-public class Main {
-    public static void main(String[] args)
+class ExtendThread {
+    public static void main(String args[])
     {
-        new NewThread();
-        // Thread t= Thread.currentThread();
-        //System.out.println("Current Thread : "+t);
-        //change the name of the thread
-        //t.setName("My Thread");
-        //System.out.println("After name change : "+t);
+        new NewThread1();
 
         try{
             for(int n=5;n>0;n--)
